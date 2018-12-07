@@ -33,6 +33,6 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
-    implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha07"
-    implementation "android.arch.navigation:navigation-ui-ktx:1.0.0-alpha07"
+    implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0-alpha08"
+    implementation "android.arch.navigation:navigation-ui-ktx:1.0.0-alpha08"
 }
