@@ -25,8 +25,11 @@ class KeepStateNavigator(
         val transaction = manager.beginTransaction()
 
         val currentFragment = manager.primaryNavigationFragment
+        var initialNavigate = false
         if (currentFragment != null) {
             transaction.detach(currentFragment)
+        } else {
+            initialNavigate = true
         }
 
         var fragment = manager.findFragmentByTag(tag)
@@ -42,6 +45,11 @@ class KeepStateNavigator(
         transaction.setReorderingAllowed(true)
         transaction.commit()
 
-        return null
+        return if (initialNavigate) {
+            // If always return null, selected BottomNavigation item is not same as app:startDestination in first time.
+            destination
+        } else {
+            null
+        }
     }
 }
