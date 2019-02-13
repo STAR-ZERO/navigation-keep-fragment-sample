@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
@@ -33,6 +34,6 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
-    implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0-beta01"
-    implementation "android.arch.navigation:navigation-ui-ktx:1.0.0-beta01"
+    implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0-beta02"
+    implementation "android.arch.navigation:navigation-ui-ktx:1.0.0-beta02"
 }
