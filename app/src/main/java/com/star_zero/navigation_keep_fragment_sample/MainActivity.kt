@@ -7,7 +7,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.plusAssign
 import androidx.navigation.ui.setupWithNavController
 import com.star_zero.navigation_keep_fragment_sample.databinding.ActivityMainBinding
+import com.star_zero.navigation_keep_fragment_sample.navigation.KeepStateBackStackNavigator
 import com.star_zero.navigation_keep_fragment_sample.navigation.KeepStateNavigator
+import com.star_zero.navigation_keep_fragment_sample.navigation.setupWithNavController
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,5 +32,11 @@ class MainActivity : AppCompatActivity() {
         navController.setGraph(R.navigation.nav_graph)
 
         binding.bottomNav.setupWithNavController(navController)
+
+        // With BackStack
+//        val navigator = KeepStateBackStackNavigator(this, navHostFragment.childFragmentManager, R.id.nav_host_fragment)
+//        navController.navigatorProvider += navigator
+//        navController.setGraph(R.navigation.nav_graph_back_stack)
+//        binding.bottomNav.setupWithNavController(navController, navigator)
     }
 }
