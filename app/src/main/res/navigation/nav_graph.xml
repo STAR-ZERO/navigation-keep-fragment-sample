@@ -6,12 +6,23 @@
 
     <keep_state_fragment
         android:id="@+id/navigation_home"
-        android:name="com.star_zero.navigation_keep_fragment_sample.HomeContainerFragment"
-        android:label="HomeContainerFragment" />
+        android:name="com.star_zero.navigation_keep_fragment_sample.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_home_to_detail"
+            app:destination="@id/detail" />
+    </keep_state_fragment>
+
+    <keep_state_fragment
+        android:id="@+id/detail"
+        android:name="com.star_zero.navigation_keep_fragment_sample.DetailFragment"
+        android:label="DetailFragment" />
+
     <keep_state_fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.star_zero.navigation_keep_fragment_sample.DashboardFragment"
         android:label="DashboardFragment" />
+
     <keep_state_fragment
         android:id="@+id/navigation_notifications"
         android:name="com.star_zero.navigation_keep_fragment_sample.NotificationsFragment"

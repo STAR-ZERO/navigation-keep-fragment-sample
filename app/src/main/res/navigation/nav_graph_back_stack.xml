@@ -1,17 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/navigation_notifications"> <!-- Change start tab -->
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/navigation_home"> <!-- Change start tab -->
 
     <keep_state_fragment_back_stack
         android:id="@+id/navigation_home"
-        android:name="com.star_zero.navigation_keep_fragment_sample.HomeContainerFragment"
-        android:label="HomeContainerFragment" />
+        android:name="com.star_zero.navigation_keep_fragment_sample.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_home_to_detail"
+            app:destination="@id/detail" />
+    </keep_state_fragment_back_stack>
+
     <keep_state_fragment_back_stack
-        android:id="@+id/navigation_dashboard"
-        android:name="com.star_zero.navigation_keep_fragment_sample.DashboardFragment"
-        android:label="DashboardFragment" />
+        android:id="@+id/detail"
+        android:name="com.star_zero.navigation_keep_fragment_sample.DetailFragment"
+        android:label="DetailFragment" />
+
+    <keep_state_fragment_back_stack
+        android:id="@+id/leaderboard"
+        android:name="com.star_zero.navigation_keep_fragment_sample.Leaderboard"
+        android:label="@string/title_list"
+        tools:layout="@layout/fragment_leaderboard">
+        <action
+            android:id="@+id/action_leaderboard_to_userProfile"
+            app:destination="@id/userProfile"/>
+    </keep_state_fragment_back_stack>
+
+    <keep_state_fragment_back_stack
+        android:id="@+id/userProfile"
+        android:name="com.star_zero.navigation_keep_fragment_sample.UserProfile"
+        android:label="@string/title_detail"
+        tools:layout="@layout/fragment_user_profile">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="www.example.com/user/{userName}"
+            android:autoVerify="true"/>
+        <argument
+            android:name="userName"
+            app:argType="string"/>
+    </keep_state_fragment_back_stack>
+
     <keep_state_fragment_back_stack
         android:id="@+id/navigation_notifications"
         android:name="com.star_zero.navigation_keep_fragment_sample.NotificationsFragment"
