@@ -7,6 +7,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavOptions
 import androidx.navigation.Navigator
 import androidx.navigation.fragment.FragmentNavigator
+import com.berkshireic.maadic.R
 
 @Navigator.Name("keep_state_fragment") // `keep_state_fragment` is used in navigation xml
 class KeepStateNavigator(
@@ -14,6 +15,27 @@ class KeepStateNavigator(
     private val manager: FragmentManager, // Should pass childFragmentManager.
     private val containerId: Int
 ) : FragmentNavigator(context, manager, containerId) {
+
+    private var mEnterAnim = 0
+    private var mExitAnim = 0
+    private var mPopEnterAnim = 0
+    private var mPopExitAnim = 0
+
+    fun enterAnim(enterAnim: Int){
+        mEnterAnim = enterAnim
+    }
+
+    fun exitAnim(exitAnim: Int){
+        mExitAnim = exitAnim
+    }
+
+    fun popEnterAnim(popEnterAnim : Int){
+        mPopEnterAnim = popEnterAnim
+    }
+
+    fun popExitAnim(popExitAnim: Int){
+        mPopExitAnim = popExitAnim
+    }
 
     override fun navigate(
         destination: Destination,
@@ -23,6 +45,8 @@ class KeepStateNavigator(
     ): NavDestination? {
         val tag = destination.id.toString()
         val transaction = manager.beginTransaction()
+
+        transaction.setCustomAnimations(mEnterAnim,mExitAnim,mPopEnterAnim,mPopExitAnim)
 
         val currentFragment = manager.primaryNavigationFragment
         if (currentFragment != null) {
