@@ -24,15 +24,18 @@ class KeepStateNavigator(
         val tag = destination.id.toString()
         val transaction = manager.beginTransaction()
 
+        var initialNavigate = false
         val currentFragment = manager.primaryNavigationFragment
         if (currentFragment != null) {
             transaction.detach(currentFragment)
+        } else {
+            initialNavigate = true
         }
 
         var fragment = manager.findFragmentByTag(tag)
         if (fragment == null) {
             val className = destination.className
-            fragment = instantiateFragment(context, manager, className, args)
+            fragment = manager.fragmentFactory.instantiate(context.classLoader, className)
             transaction.add(containerId, fragment, tag)
         } else {
             transaction.attach(fragment)
@@ -42,6 +45,10 @@ class KeepStateNavigator(
         transaction.setReorderingAllowed(true)
         transaction.commit()
 
-        return destination
+        return if (initialNavigate) {
+            destination
+        } else {
+            null
+        }
     }
 }
