@@ -39,6 +39,7 @@ class KeepStateNavigator(
             fragment.arguments = args
             transaction.add(containerId, fragment, tag)
         } else {
+            fragment.arguments = args
             transaction.attach(fragment)
         }
 
