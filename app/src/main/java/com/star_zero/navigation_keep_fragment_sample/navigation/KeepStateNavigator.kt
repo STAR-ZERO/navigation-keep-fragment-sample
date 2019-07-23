@@ -36,6 +36,7 @@ class KeepStateNavigator(
         if (fragment == null) {
             val className = destination.className
             fragment = manager.fragmentFactory.instantiate(context.classLoader, className)
+            fragment.arguments = args
             transaction.add(containerId, fragment, tag)
         } else {
             transaction.attach(fragment)
