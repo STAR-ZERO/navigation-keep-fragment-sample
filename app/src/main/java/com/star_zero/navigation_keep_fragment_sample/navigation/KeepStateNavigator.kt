@@ -40,6 +40,7 @@ class KeepStateNavigator(
         } else {
             transaction.attach(fragment)
         }
+        fragment.arguments = args
 
         transaction.setPrimaryNavigationFragment(fragment)
         transaction.setReorderingAllowed(true)
